@@ -1,0 +1,36 @@
+# depslib dependency file v1.0
+1395959463 source:d:\owncloud\cours\theorie des langages\octo-bear\node.c
+	<stdio.h>
+	<stdlib.h>
+	"node.h"
+
+1395959287 d:\owncloud\cours\theorie des langages\octo-bear\node.h
+	<stdio.h>
+	<stdlib.h>
+
+1395959589 source:d:\owncloud\cours\theorie des langages\octo-bear\lex.yy.c
+	<stdio.h>
+	<string.h>
+	<errno.h>
+	<stdlib.h>
+	<inttypes.h>
+	<stdio.h>
+	<stdlib.h>
+	"parser.tab.h"
+	"node.h"
+	<unistd.h>
+
+1395959198 d:\owncloud\cours\theorie des langages\octo-bear\parser.tab.h
+
+1395959198 source:d:\owncloud\cours\theorie des langages\octo-bear\parser.tab.c
+	<stdio.h>
+	<stdlib.h>
+	"node.h"
+	<stddef.h>
+	<libintl.h>
+	<alloca.h>
+	<malloc.h>
+	<stdlib.h>
+	<stdlib.h>
+	<stdio.h>
+
