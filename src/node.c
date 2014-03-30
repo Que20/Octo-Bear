@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 #include "node.h"
 
 Node* node_new(Node* left, Node* right, node_type type, Variable* v){
@@ -37,6 +38,66 @@ void node_debug(Node* n, unsigned int i){
     }
     if(n->left){
         node_debug(n->left, i+4);
+    }
+}
+
+int node_eval(Node* n){
+    int left;
+    int right;
+    if(n->v){
+        printf("%d\n",n->v->value);
+        return n->v->value;
+    }else{
+        if(n->left){
+            node_eval(n->left);
+        }else{
+            left = 0;
+        }
+        if(n->right){
+            node_eval(n->right);
+        }else{
+            right = 0;
+        }
+        printf("%d\n",left);
+        printf("%d\n",right);
+        switch(n->type){
+            case NT_ADD :
+                return left + right;
+                break;
+            case NT_SUB :
+                return left - right;
+                break;
+            case NT_MULT :
+                return left * right;
+                break;
+            case NT_POW :
+                return pow(left, right);
+                break;
+            case NT_DIV :
+                return left / right;
+                break;
+            case NT_EQUAL :
+                return 0;
+                break;
+            case NT_P_UNARY :
+                return +left;
+                break;
+            case NT_M_UNARY :
+                return -left;
+                break;
+            case NT_VALUE :
+                return left;
+                break;
+            case NT_VAR_DEC :
+                return 0;
+                break;
+            case NT_VAR_ACC :
+                return 0;
+                break;
+            default :
+                return 0;
+                break;
+        }
     }
 }
 

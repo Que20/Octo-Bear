@@ -34,3 +34,38 @@
 	<stdlib.h>
 	<stdio.h>
 
+1395959823 source:d:\owncloud\cours\theorie des langages\octo-bear\src\lex.yy.c
+	<stdio.h>
+	<string.h>
+	<errno.h>
+	<stdlib.h>
+	<inttypes.h>
+	<stdio.h>
+	<stdlib.h>
+	"parser.tab.h"
+	"node.h"
+	<unistd.h>
+
+1395959822 d:\owncloud\cours\theorie des langages\octo-bear\src\parser.tab.h
+
+1395959287 d:\owncloud\cours\theorie des langages\octo-bear\src\node.h
+	<stdio.h>
+	<stdlib.h>
+
+1396139605 source:d:\owncloud\cours\theorie des langages\octo-bear\src\node.c
+	<stdio.h>
+	<stdlib.h>
+	"node.h"
+
+1395959822 source:d:\owncloud\cours\theorie des langages\octo-bear\src\parser.tab.c
+	<stdio.h>
+	<stdlib.h>
+	"node.h"
+	<stddef.h>
+	<libintl.h>
+	<alloca.h>
+	<malloc.h>
+	<stdlib.h>
+	<stdlib.h>
+	<stdio.h>
+

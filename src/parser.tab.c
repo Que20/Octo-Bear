@@ -455,8 +455,8 @@ static const yytype_int8 yyrhs[] =
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    35,    35,    36,    43,    46,    49,    52,    55,    58,
-      61
+       0,    35,    35,    36,    44,    47,    50,    53,    56,    59,
+      62
 };
 #endif
 
@@ -1360,12 +1360,13 @@ yyreduce:
     {
 		puts("Tree Value : ");
 		node_debug((yyvsp[(2) - (3)].node), 0);
+		printf("%d\n",node_eval((yyvsp[(2) - (3)].node)));
 	 }
     break;
 
   case 4:
 /* Line 1792 of yacc.c  */
-#line 43 "parser.y"
+#line 44 "parser.y"
     {
 		(yyval.node) = node_new(NULL, NULL, NT_VALUE, variable_new((yyvsp[(1) - (1)].var_value), NULL));
 	 }
@@ -1373,7 +1374,7 @@ yyreduce:
 
   case 5:
 /* Line 1792 of yacc.c  */
-#line 46 "parser.y"
+#line 47 "parser.y"
     {
 		(yyval.node) = node_new(NULL, NULL, NT_VAR_ACC, variable_new(0, (yyvsp[(1) - (1)].var_name)));
 	 }
@@ -1381,7 +1382,7 @@ yyreduce:
 
   case 6:
 /* Line 1792 of yacc.c  */
-#line 49 "parser.y"
+#line 50 "parser.y"
     {
 		(yyval.node) = node_new((yyvsp[(1) - (3)].node), (yyvsp[(3) - (3)].node), NT_ADD, NULL);
 	 }
@@ -1389,7 +1390,7 @@ yyreduce:
 
   case 7:
 /* Line 1792 of yacc.c  */
-#line 52 "parser.y"
+#line 53 "parser.y"
     {
 		(yyval.node) = node_new((yyvsp[(1) - (3)].node), (yyvsp[(3) - (3)].node), NT_SUB, NULL);
 	 }
@@ -1397,7 +1398,7 @@ yyreduce:
 
   case 8:
 /* Line 1792 of yacc.c  */
-#line 55 "parser.y"
+#line 56 "parser.y"
     {
 		(yyval.node) = node_new((yyvsp[(1) - (3)].node), (yyvsp[(3) - (3)].node), NT_MULT, NULL);
 	 }
@@ -1405,7 +1406,7 @@ yyreduce:
 
   case 9:
 /* Line 1792 of yacc.c  */
-#line 58 "parser.y"
+#line 59 "parser.y"
     {
 		(yyval.node) = node_new((yyvsp[(1) - (3)].node), (yyvsp[(3) - (3)].node), NT_DIV, NULL);
 	 }
@@ -1413,7 +1414,7 @@ yyreduce:
 
   case 10:
 /* Line 1792 of yacc.c  */
-#line 61 "parser.y"
+#line 62 "parser.y"
     {
 		(yyval.node) = node_new((yyvsp[(1) - (3)].node), (yyvsp[(3) - (3)].node), NT_EQUAL, NULL);
 	 }
@@ -1421,7 +1422,7 @@ yyreduce:
 
 
 /* Line 1792 of yacc.c  */
-#line 1425 "parser.tab.c"
+#line 1426 "parser.tab.c"
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1653,7 +1654,7 @@ yyreturn:
 
 
 /* Line 2055 of yacc.c  */
-#line 66 "parser.y"
+#line 67 "parser.y"
 
 
 int yyerror(const char* s){
