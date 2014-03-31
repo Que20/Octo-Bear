@@ -70,3 +70,39 @@
 	<stdlib.h>
 	<stdio.h>
 
+1396272233 source:c:\users\norto_000\documents\github\octo-bear\src\lex.yy.c
+	<stdio.h>
+	<string.h>
+	<errno.h>
+	<stdlib.h>
+	<inttypes.h>
+	<stdio.h>
+	<stdlib.h>
+	"parser.tab.h"
+	"node.h"
+	<unistd.h>
+
+1396272233 c:\users\norto_000\documents\github\octo-bear\src\parser.tab.h
+
+1396271983 c:\users\norto_000\documents\github\octo-bear\src\node.h
+	<stdio.h>
+	<stdlib.h>
+
+1396272025 source:c:\users\norto_000\documents\github\octo-bear\src\node.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+	"node.h"
+
+1396272233 source:c:\users\norto_000\documents\github\octo-bear\src\parser.tab.c
+	<stdio.h>
+	<stdlib.h>
+	"node.h"
+	<stddef.h>
+	<libintl.h>
+	<alloca.h>
+	<malloc.h>
+	<stdlib.h>
+	<stdlib.h>
+	<stdio.h>
+

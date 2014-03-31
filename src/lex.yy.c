@@ -453,9 +453,15 @@ int yy_flex_debug = 0;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
+<<<<<<< HEAD
 #line 1 "parser/lexer.l"
 #define YY_NO_INPUT 1
 #line 5 "parser/lexer.l"
+=======
+#line 1 "parser\\lexer.l"
+#define YY_NO_INPUT 1
+#line 5 "parser\\lexer.l"
+>>>>>>> fcc5a503f5ad936cd0d5150e24e09052e63ef52e
 	#include <stdio.h>
 	#include <stdlib.h>
 
@@ -641,7 +647,11 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
     
+<<<<<<< HEAD
 #line 19 "parser/lexer.l"
+=======
+#line 19 "parser\\lexer.l"
+>>>>>>> fcc5a503f5ad936cd0d5150e24e09052e63ef52e
 
 
 #line 648 "lex.yy.c"
@@ -729,53 +739,93 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
+<<<<<<< HEAD
 #line 21 "parser/lexer.l"
+=======
+#line 21 "parser\\lexer.l"
+>>>>>>> fcc5a503f5ad936cd0d5150e24e09052e63ef52e
 { return(PLUS); }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
+<<<<<<< HEAD
 #line 22 "parser/lexer.l"
+=======
+#line 22 "parser\\lexer.l"
+>>>>>>> fcc5a503f5ad936cd0d5150e24e09052e63ef52e
 { return(MINUS); }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
+<<<<<<< HEAD
 #line 23 "parser/lexer.l"
+=======
+#line 23 "parser\\lexer.l"
+>>>>>>> fcc5a503f5ad936cd0d5150e24e09052e63ef52e
 { return(SLASH); }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
+<<<<<<< HEAD
 #line 24 "parser/lexer.l"
+=======
+#line 24 "parser\\lexer.l"
+>>>>>>> fcc5a503f5ad936cd0d5150e24e09052e63ef52e
 { return(STAR); }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
+<<<<<<< HEAD
 #line 25 "parser/lexer.l"
+=======
+#line 25 "parser\\lexer.l"
+>>>>>>> fcc5a503f5ad936cd0d5150e24e09052e63ef52e
 { return(EQUAL); }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
+<<<<<<< HEAD
 #line 27 "parser/lexer.l"
+=======
+#line 27 "parser\\lexer.l"
+>>>>>>> fcc5a503f5ad936cd0d5150e24e09052e63ef52e
 { yylval.var_name = strdup(yytext); 	return(VAR_NAME); }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
+<<<<<<< HEAD
 #line 28 "parser/lexer.l"
+=======
+#line 28 "parser\\lexer.l"
+>>>>>>> fcc5a503f5ad936cd0d5150e24e09052e63ef52e
 { yylval.var_value = atoi(yytext); 		return(VALUE); }
 	YY_BREAK
 case 8:
 /* rule 8 can match eol */
 YY_RULE_SETUP
+<<<<<<< HEAD
 #line 30 "parser/lexer.l"
+=======
+#line 30 "parser\\lexer.l"
+>>>>>>> fcc5a503f5ad936cd0d5150e24e09052e63ef52e
 { return(NEW_LINE); }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
+<<<<<<< HEAD
 #line 32 "parser/lexer.l"
+=======
+#line 32 "parser\\lexer.l"
+>>>>>>> fcc5a503f5ad936cd0d5150e24e09052e63ef52e
 {  }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
+<<<<<<< HEAD
 #line 33 "parser/lexer.l"
+=======
+#line 33 "parser\\lexer.l"
+>>>>>>> fcc5a503f5ad936cd0d5150e24e09052e63ef52e
 ECHO;
 	YY_BREAK
 #line 782 "lex.yy.c"
@@ -1735,4 +1785,8 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
+<<<<<<< HEAD
 #line 33 "parser/lexer.l"
+=======
+#line 33 "parser\\lexer.l"
+>>>>>>> fcc5a503f5ad936cd0d5150e24e09052e63ef52e

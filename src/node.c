@@ -45,7 +45,7 @@ int node_eval(Node* n){
     int left;
     int right;
     if(n->v){
-        printf("%d\n",n->v->value);
+        printf("VALUE : %d\n",n->v->value);
         return n->v->value;
     }else{
         if(n->left){
@@ -58,8 +58,8 @@ int node_eval(Node* n){
         }else{
             right = 0;
         }
-        printf("%d\n",left);
-        printf("%d\n",right);
+        printf("LEFT  : %d\n",left);
+        printf("RIGHT : %d\n",right);
         switch(n->type){
             case NT_ADD :
                 return left + right;
