@@ -63,7 +63,7 @@
 
 /* Copy the first part of user declarations.  */
 /* Line 371 of yacc.c  */
-#line 1 "parser.y"
+#line 1 "parser/parser.y"
 
 	#define YYERROR_VERBOSE
 
@@ -128,7 +128,7 @@ extern int yydebug;
 typedef union YYSTYPE
 {
 /* Line 387 of yacc.c  */
-#line 13 "parser.y"
+#line 13 "parser/parser.y"
 
 	char* var_name;
 	int var_value;
@@ -1356,7 +1356,7 @@ yyreduce:
     {
         case 3:
 /* Line 1792 of yacc.c  */
-#line 36 "parser.y"
+#line 36 "parser/parser.y"
     {
 		puts("Tree Value : ");
 		node_debug((yyvsp[(2) - (3)].node), 0);
@@ -1366,7 +1366,7 @@ yyreduce:
 
   case 4:
 /* Line 1792 of yacc.c  */
-#line 44 "parser.y"
+#line 44 "parser/parser.y"
     {
 		(yyval.node) = node_new(NULL, NULL, NT_VALUE, variable_new((yyvsp[(1) - (1)].var_value), NULL));
 	 }
@@ -1374,7 +1374,7 @@ yyreduce:
 
   case 5:
 /* Line 1792 of yacc.c  */
-#line 47 "parser.y"
+#line 47 "parser/parser.y"
     {
 		(yyval.node) = node_new(NULL, NULL, NT_VAR_ACC, variable_new(0, (yyvsp[(1) - (1)].var_name)));
 	 }
@@ -1382,7 +1382,7 @@ yyreduce:
 
   case 6:
 /* Line 1792 of yacc.c  */
-#line 50 "parser.y"
+#line 50 "parser/parser.y"
     {
 		(yyval.node) = node_new((yyvsp[(1) - (3)].node), (yyvsp[(3) - (3)].node), NT_ADD, NULL);
 	 }
@@ -1390,7 +1390,7 @@ yyreduce:
 
   case 7:
 /* Line 1792 of yacc.c  */
-#line 53 "parser.y"
+#line 53 "parser/parser.y"
     {
 		(yyval.node) = node_new((yyvsp[(1) - (3)].node), (yyvsp[(3) - (3)].node), NT_SUB, NULL);
 	 }
@@ -1398,7 +1398,7 @@ yyreduce:
 
   case 8:
 /* Line 1792 of yacc.c  */
-#line 56 "parser.y"
+#line 56 "parser/parser.y"
     {
 		(yyval.node) = node_new((yyvsp[(1) - (3)].node), (yyvsp[(3) - (3)].node), NT_MULT, NULL);
 	 }
@@ -1406,7 +1406,7 @@ yyreduce:
 
   case 9:
 /* Line 1792 of yacc.c  */
-#line 59 "parser.y"
+#line 59 "parser/parser.y"
     {
 		(yyval.node) = node_new((yyvsp[(1) - (3)].node), (yyvsp[(3) - (3)].node), NT_DIV, NULL);
 	 }
@@ -1414,7 +1414,7 @@ yyreduce:
 
   case 10:
 /* Line 1792 of yacc.c  */
-#line 62 "parser.y"
+#line 62 "parser/parser.y"
     {
 		(yyval.node) = node_new((yyvsp[(1) - (3)].node), (yyvsp[(3) - (3)].node), NT_EQUAL, NULL);
 	 }
@@ -1654,7 +1654,7 @@ yyreturn:
 
 
 /* Line 2055 of yacc.c  */
-#line 67 "parser.y"
+#line 67 "parser/parser.y"
 
 
 int yyerror(const char* s){

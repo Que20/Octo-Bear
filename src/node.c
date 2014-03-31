@@ -49,12 +49,12 @@ int node_eval(Node* n){
         return n->v->value;
     }else{
         if(n->left){
-            node_eval(n->left);
+            left = node_eval(n->left);
         }else{
             left = 0;
         }
         if(n->right){
-            node_eval(n->right);
+            right = node_eval(n->right);
         }else{
             right = 0;
         }
