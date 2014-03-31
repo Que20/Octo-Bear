@@ -80,10 +80,10 @@ int node_eval(Node* n){
                 return 0;
                 break;
             case NT_P_UNARY :
-                return +left;
+                return +right;
                 break;
             case NT_M_UNARY :
-                return -left;
+                return -right;
                 break;
             case NT_VALUE :
                 return left;

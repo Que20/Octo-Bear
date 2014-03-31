@@ -62,6 +62,12 @@ Expression:
 	| Expression EQUAL Expression {
 		$$ = node_new($1, $3, NT_EQUAL, NULL);
 	 }
+	| MINUS Expression {
+		$$ = node_new(NULL, $2, NT_M_UNARY, NULL);
+	 }
+	| PLUS Expression {
+		$$ = node_new(NULL, $2, NT_P_UNARY, NULL);
+	 }
 	;
 
 %%
