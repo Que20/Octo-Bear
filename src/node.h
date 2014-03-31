@@ -36,7 +36,6 @@ struct s_Node {
 
 typedef struct  s_Node Node;
 
-
 Node* node_new(Node* left, Node* right, node_type type, Variable* v);
 Variable* variable_new(int value, char* nom);
 void print_space(unsigned int i);

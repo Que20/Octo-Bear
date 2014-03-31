@@ -1342,7 +1342,7 @@ yyreduce:
     {
 		puts("Tree Value : ");
 		node_debug((yyvsp[(2) - (3)].node), 0);
-		printf("%d\n",node_eval((yyvsp[(2) - (3)].node)));
+		printf("RESULT : %d\n",node_eval((yyvsp[(2) - (3)].node)));
 	 ;}
     break;
 
