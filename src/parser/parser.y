@@ -36,7 +36,7 @@ Input:
 	| Input Expression NEW_LINE {
 		puts("Tree Value : ");
 		node_debug($2, 0);
-		printf("%d\n",node_eval($2));
+		printf("RESULT : %d\n",node_eval($2));
 	 }
 	;
 

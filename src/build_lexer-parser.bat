@@ -1,2 +1,2 @@
-win_bison -d parser.y
-win_flex lexer.l
+win_bison -d parser\parser.y
+win_flex parser\lexer.l
