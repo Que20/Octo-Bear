@@ -89,7 +89,7 @@ int node_eval(Node* n){
                 return left;
                 break;
             case NT_VAR_DEC :
-                return 0;
+                return 1;
                 break;
             case NT_VAR_ACC :
                 return 0;

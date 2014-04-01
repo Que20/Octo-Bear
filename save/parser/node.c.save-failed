@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "node.h"
+
+Node* node_new(Node* right, Node* left, node_type type, Variable* v){
+    Node* n = malloc(size(Node));
+    n->left = left;
+    n->right = right;
+    n->type = type;
+    n->v = v;
+
+    return n;
+}
+
+Variable* variable_new(int value, char* nom){
+    Variable* v = malloc(size(Variable));
+    v->value = value;
+    v->name = name;
+
+    return v;
+}
+
+void print_space(unsigned int i){
+    for(; i > 0 ; i--){
+        fputc(' ',stdout);
+    }
+}
+
+void node_debug(Node* n, unsigned int i){
+    puts("Node :");
+    printf("    type :%d\n",n->type);
+    if(n->v){
+        node_debug(n->v, i+1);
+    }
+    if(n->right){
+        node_debug(n->right, i+1);
+    }
+    if(n->left){
+        node_debug(n->left, i+1);
+    }
+
+}
