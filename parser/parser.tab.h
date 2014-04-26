@@ -51,22 +51,25 @@ extern int yydebug;
      STAR = 260,
      SLASH = 261,
      EQUAL = 262,
-     BOOLEAN = 263,
-     EQUALS = 264,
-     NEQUALS = 265,
-     GEQUALS = 266,
-     LEQUALS = 267,
-     GREATER = 268,
-     LESS = 269,
-     NOT = 270,
-     VAR_NAME = 271,
-     VAR_VALUE = 272,
-     NEW_LINE = 273,
-     IFC = 274,
-     IFS = 275,
-     START_BLOCK = 276,
-     END_BLOCK = 277,
-     EOI = 278
+     INT = 263,
+     FLOAT = 264,
+     BOOLEAN = 265,
+     EQUALS = 266,
+     NEQUALS = 267,
+     GEQUALS = 268,
+     LEQUALS = 269,
+     GREATER = 270,
+     LESS = 271,
+     NOT = 272,
+     VAR_NAME = 273,
+     VAR_VALUE = 274,
+     NEW_LINE = 275,
+     IFC = 276,
+     IFS = 277,
+     START_BLOCK = 278,
+     END_BLOCK = 279,
+     EOI = 280,
+     EOP = 281
    };
 #endif
 
@@ -75,14 +78,18 @@ extern int yydebug;
 typedef union YYSTYPE
 {
 /* Line 2058 of yacc.c  */
-#line 13 "parser/parser.y"
+#line 17 "parser/parser.y"
 
 	char* var_name;
 	float var_value;
+	struct s_Table* table;
+	struct s_Expression* expression;
+	struct s_Instruction* instruction;
+	struct s_Block* block;
 
 
 /* Line 2058 of yacc.c  */
-#line 86 "parser.tab.h"
+#line 93 "parser.tab.h"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
