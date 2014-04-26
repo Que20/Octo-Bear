@@ -13,7 +13,7 @@
 
 white_char	[ \t]+
 number		[0-9]
-charac		[_a-zA-Z]
+charac		[_a-zA-Z_]
 
 plus		"+"
 minus		"-"

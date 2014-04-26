@@ -3,8 +3,8 @@
 
 #include "block.h"
 
-Block* evalBlock(Block* debugBlocks);
-Instruction* evalInstruction(Instruction* instruction);
+Block* evalBlocks(Block* debugBlocks);
+Instruction* evalInstruction(Block* blocks, Instruction* instruction);
 Expression* evalExpression(Expression* expression);
 
 #endif /* H_EVAL */

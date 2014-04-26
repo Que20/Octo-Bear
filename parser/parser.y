@@ -41,7 +41,8 @@
 %left VAR_NAME VAR_VALUE
 
 %type <var_name> VAR_NAME
-%type <var_value> VAR_VALUE Expression
+%type <var_value> VAR_VALUE INT
+%type <expression> Expression
 %type <instruction> PLUS MINUS STAR SLASH EQUAL BOOLEAN EQUALS NEQUALS GEQUALS LEQUALS GREATER LESS NOT NEW_LINE Command
 %type <block> START_BLOCK END_BLOCK Line
 
@@ -50,20 +51,21 @@
 
 Input:
 	{ /* empty */}
-	| Input Line {
+	| Line Input {
 		printf("Analyse de la ligne 1!\n");
 	}
-	| Input error {
+	| error Input {
 		yyerrok;
 	}
 	;
 
 Line:
-	EOI {
+	NEW_LINE {
 		printf("Analyse de la ligne 2!\n");
 	}
 	| Command Line {
 		printf("Analyse de la ligne 3!\n");
+		root->instruction = (Instruction*) $1;
 	}
 	| START_BLOCK Line {
 		printf("Analyse de la ligne 4!\n");
@@ -74,17 +76,19 @@ Line:
 	;
 
 Command:
-	NEW_LINE {
+	EOI {
 		printf("EOP\n");
 	}
 	| Expression Command {
 		printf("Analyse de la ligne 7!\n");
+		$$ = (Instruction*) newInstruction(NULL, NULL, (Expression*) $1, TI_EXPRESSION);
 	}
 	;
 
 Expression:
 	INT {
 		printf("Analyse de la ligne 8!\n");
+		$$ = (Expression*) newExpression(NULL, NULL, TE_VALUE, $1);
 	}
 	| FLOAT {
 		printf("Analyse de la ligne 9!\n");
@@ -101,6 +105,14 @@ Expression:
 	| Expression EQUAL Expression {
 		printf("Affectation !\n");
 	}
+	| Expression EQUALS Expression {
+		printf("Egualite ?\n");
+		$$ = (Expression*) newExpression((Expression*) $1, (Expression*) $3, TE_EQUALS, 0);
+	}
+	| "(" Expression ")" {
+		printf("DIGRESSSSSSSSSSSS ...\n");
+		$$ = (Expression*) newExpression((Expression*) $2, NULL, TE_DIGRESS, 0);
+	}
 	;
 
 %%
@@ -116,7 +128,6 @@ int main(int argc, char** argv) {
 	root = newBlock(NULL, NULL, NULL);
 
 	// Parsing ...
-	/*
 	if (argc > 1) {
 		printf("Parametre : %s\n", argv[1]);
 		FILE *f = fopen(argv[1], "r+");
@@ -126,21 +137,23 @@ int main(int argc, char** argv) {
 	} else {
 		yyparse();
 	}
-	*/
-	//Expression* condLeft = newExpression(NULL, NULL, )
+	
+	//Expression* condLeft = newExpression(NULL, NULL, ) (a == (b == c)) {
 
-	Expression* left = newExpression(NULL, NULL, TE_VALUE, 4);
-	Expression* right = newExpression(NULL, NULL, TE_VALUE, 5);
-	Expression* expressionComplet1 = newExpression(left, right, TE_PLUS, 0);
+	/*
+	Expression* right = newExpression(newExpression(NULL, NULL, TE_VALUE, 37), newExpression(NULL, NULL, TE_VALUE, 37), TE_EQUALS, 0);
+	Expression* left = newExpression(newExpression(NULL, NULL, TE_VALUE, 45), newExpression(NULL, NULL, TE_VALUE, 45), TE_EQUALS, 0);
+	Expression* expressionComplet1 = newExpression(left, right, TE_EQUALS, 0);
 	Instruction* testExpression = newInstruction(NULL, NULL, expressionComplet1, TI_EXPRESSION);
 
 	root->instruction = testExpression;
+	*/
 
 	printf("===== Starting debug ======\n");
 	debugBlock(root, 0);
 
 	printf("===== Starting evaluation ======\n");
-	evalBlock(root);
+	evalBlocks(root);
 
 	return 0;
 }

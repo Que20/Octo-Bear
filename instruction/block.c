@@ -20,6 +20,7 @@ Block* newBlock(Block* child, Instruction* cond, Instruction* inst) {
 		temp->child = child;
 		temp->condition = cond;
 		temp->instruction = inst;
+		temp->liste = (Table*) malloc( sizeof(Table) );
 	}
 
 	return temp;
@@ -36,6 +37,54 @@ Expression* newExpression(Expression* left, Expression* right, TypeExpression ty
 	}
 
 	return temp;
+}
+
+void setVariable(Table *root, char* name, float value, TypeVariable type) {
+
+}
+
+Table* getVariable(Table *root, char* name) {
+	Table *retour = NULL;
+	Table *temp = root;
+
+	while (temp != NULL) {
+		if (strcmp(name, temp->name) == 0) {
+			retour = temp;
+			temp = NULL;
+		}
+		temp = temp->next;
+	}
+
+	if (retour == NULL) {
+		retour = (Table*) malloc( sizeof(Table) );
+		retour->name = NULL;
+		retour->value = 0.0;
+		retour->next = NULL;
+		retour->type = TV_NONE;
+	}
+
+	return retour;
+}
+
+Table* removeVariable(Table *root, char *name) {
+	Table* tmpLast = root;
+	Table* tmpTest = root;
+
+	if (root != NULL) {
+		if (strcmp(root->name, name) == 0) {
+
+		} else {
+			while (tmpLast != NULL) {
+				tmpTest = tmpTest->next;
+
+				if (tmpTest != NULL && strcmp(root->name, name) == 0) {
+
+				}
+
+				tmpLast = tmpTest;
+			}
+		}
+	}
 }
 
 void printSpace(int space) {
@@ -98,4 +147,8 @@ void debugExpression(Expression* expression, int leftSpacer) {
 		printSpace(leftSpacer);
 		printf("expression null\n");
 	}
+}
+
+void debugTable() {
+	
 }

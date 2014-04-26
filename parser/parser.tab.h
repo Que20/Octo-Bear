@@ -78,7 +78,7 @@ extern int yydebug;
 typedef union YYSTYPE
 {
 /* Line 2058 of yacc.c  */
-#line 17 "parser/parser.y"
+#line 18 "parser/parser.y"
 
 	char* var_name;
 	float var_value;
