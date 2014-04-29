@@ -125,9 +125,16 @@ int yyerror(const char* s) {
 int main(int argc, char** argv) {
 
 	// Initialising ...
-	root = newBlock(NULL, NULL, NULL);
+	struct s_Table* tableVide = NULL;
+
+	setVariable(&tableVide, "abc", 1, TV_BOOL);
+
+	root = newBlock(NULL, NULL, NULL, tableVide);
+
+	setVariable(&tableVide, "def", 2.2, TV_FLOAT);
 
 	// Parsing ...
+	/*
 	if (argc > 1) {
 		printf("Parametre : %s\n", argv[1]);
 		FILE *f = fopen(argv[1], "r+");
@@ -137,17 +144,16 @@ int main(int argc, char** argv) {
 	} else {
 		yyparse();
 	}
+	*/
 	
 	//Expression* condLeft = newExpression(NULL, NULL, ) (a == (b == c)) {
 
-	/*
-	Expression* right = newExpression(newExpression(NULL, NULL, TE_VALUE, 37), newExpression(NULL, NULL, TE_VALUE, 37), TE_EQUALS, 0);
+	Expression* right = newExpression(newExpression(NULL, NULL, TE_VALUE, 37), newExpression(NULL, NULL, TE_VALUE, 37), TE_NEQUALS, 0);
 	Expression* left = newExpression(newExpression(NULL, NULL, TE_VALUE, 45), newExpression(NULL, NULL, TE_VALUE, 45), TE_EQUALS, 0);
 	Expression* expressionComplet1 = newExpression(left, right, TE_EQUALS, 0);
 	Instruction* testExpression = newInstruction(NULL, NULL, expressionComplet1, TI_EXPRESSION);
 
 	root->instruction = testExpression;
-	*/
 
 	printf("===== Starting debug ======\n");
 	debugBlock(root, 0);

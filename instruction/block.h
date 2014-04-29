@@ -88,19 +88,19 @@ typedef struct s_Block Block;
 
 /* Function */
 Instruction* newInstruction(Instruction* left, Instruction* right, Expression* expression, TypeInstruction type);
-Block* newBlock(Block* child, Instruction* cond, Instruction* inst);
+Block* newBlock(Block* child, Instruction* cond, Instruction* inst, Table* table);
 Expression* newExpression(Expression* left, Expression* right, TypeExpression type, float valueVariable);
 
 /* Variable gestion */
-void setVariable(Table *root, char* name, float value, TypeVariable type);
+void setVariable(Table **root, char* name, float value, TypeVariable type);
 Table* getVariable(Table *root, char* name);
-Table* removeVariable(Table *root, char *name);
+void removeVariable(Table **root, char *name);
 
 void printSpace(int space);
 
 void debugBlock(Block* debugBlocks, int leftSpacer);
 void debugInstruction(Instruction* instruction, int leftSpacer);
 void debugExpression(Expression* expression, int leftSpacer);
-void debugTable();
+void debugTable(Table* root, int leftSpacer);
 
 #endif /* H_BLOCK */

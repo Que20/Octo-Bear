@@ -13,14 +13,14 @@ Instruction* newInstruction(Instruction* left, Instruction* right, Expression* e
 	return temp;
 }
 
-Block* newBlock(Block* child, Instruction* cond, Instruction* inst) {
+Block* newBlock(Block* child, Instruction* cond, Instruction* inst, Table* table) {
 	Block* temp = (Block*) malloc( sizeof(Block) );
 
 	if (temp != NULL) {
 		temp->child = child;
 		temp->condition = cond;
 		temp->instruction = inst;
-		temp->liste = (Table*) malloc( sizeof(Table) );
+		temp->liste = table;
 	}
 
 	return temp;
@@ -39,8 +39,21 @@ Expression* newExpression(Expression* left, Expression* right, TypeExpression ty
 	return temp;
 }
 
-void setVariable(Table *root, char* name, float value, TypeVariable type) {
+void setVariable(Table **root, char* name, float value, TypeVariable type) {
+	Table *ajout = (Table*) malloc( sizeof(Table) );
 
+	if (ajout != NULL) {
+		Table* tt = getVariable(*root, name);
+		if (tt != NULL && tt->name != NULL) {
+			ajout->name = name;
+			ajout->value = value;
+			ajout->type = type;
+			ajout->next = (*root)->next;
+			*root = ajout;
+		} else {
+			printf("Erreur variable '%s' existant !\n", tt->name);
+		}
+	}
 }
 
 Table* getVariable(Table *root, char* name) {
@@ -61,32 +74,33 @@ Table* getVariable(Table *root, char* name) {
 		retour->value = 0.0;
 		retour->next = NULL;
 		retour->type = TV_NONE;
+		printf("Inexistant !\n");
 	}
 
 	return retour;
 }
 
-Table* removeVariable(Table *root, char *name) {
-	Table* tmpLast = root;
-	Table* tmpTest = root;
+void removeVariable(Table **root, char *name) {
+	Table* tmpLast = *root;
+	Table* tmpTest = *root;
 
 	if (root != NULL) {
-		if (strcmp(root->name, name) == 0) {
-
+		if (strcmp((*root)->name, name) == 0) {
+			*root = (*root)->next;
+			free(tmpTest);
 		} else {
 			while (tmpLast != NULL) {
 				tmpTest = tmpTest->next;
-				/*
-				if (tmpTest != NULL && strcmp(root->name, name) == 0) {
 
+				if (tmpTest != NULL && strcmp(tmpTest->name, name) == 0) {
+					tmpLast->next = tmpTest->next;
+					free(tmpTest);
+				} else {
+					tmpLast = tmpTest;
 				}
-				*/
-				tmpLast = tmpTest;
 			}
 		}
 	}
-
-	return tmpLast;
 }
 
 void printSpace(int space) {
@@ -107,6 +121,7 @@ void debugBlock(Block* debugBlocks, int leftSpacer) {
 	
 	if (debugBlocks != NULL) {
 		debugBlock(debugBlocks->child, leftSpacer + 1);
+		debugTable(debugBlocks->liste, leftSpacer + 1);
 		debugInstruction(debugBlocks->condition, leftSpacer + 1);
 		debugInstruction(debugBlocks->instruction, leftSpacer + 1);
 	} else {
@@ -151,6 +166,27 @@ void debugExpression(Expression* expression, int leftSpacer) {
 	}
 }
 
-void debugTable() {
-	
+void debugTable(Table* root, int leftSpacer) {
+	Table *temp = root;
+
+	while(temp != NULL) {
+
+		printSpace(leftSpacer);
+		printf("Variable :\n");
+
+		printSpace(leftSpacer + 1);
+		printf("Name : %s\n", temp->name);
+
+		printSpace(leftSpacer + 1);
+		printf("Value : %f\n", temp->value);
+
+		printSpace(leftSpacer + 1);
+		printf("Type : %f\n", temp->type);
+
+		temp = temp->next;
+
+		if (temp == NULL) {
+			printf("WTF!\n");
+		}
+	}
 }

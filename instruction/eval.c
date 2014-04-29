@@ -6,7 +6,6 @@ Block* evalBlocks(Block* debugBlocks) {
 	Instruction* instruction = NULL;
 
 	if (debugBlocks != NULL) {
-		printf("Debug block ...\n");
 		blocks = evalBlocks(debugBlocks->child);
 		condition = evalInstruction(debugBlocks, debugBlocks->condition);
 		instruction = evalInstruction(debugBlocks, debugBlocks->instruction);
@@ -20,7 +19,6 @@ Instruction* evalInstruction(Block* blocks, Instruction* instruction) {
 	Expression* e = NULL;
 
 	if (instruction != NULL) {
-		printf("Debug instruction ...\n");
 		if (instruction->type == TI_EXPRESSION) {
 			e = evalExpression(instruction->expression);
 
@@ -46,7 +44,6 @@ Expression* evalExpression(Expression* expression) {
 	float rightValue = 0.0;
 
 	if (expression != NULL) {
-		printf("Debug expression ...\n");
 		left = evalExpression(expression->left);
 		right = evalExpression(expression->right);
 
@@ -54,13 +51,66 @@ Expression* evalExpression(Expression* expression) {
 
 		leftValue = (left != NULL) ? left->value : 0.0;
 		rightValue = (right != NULL) ? right->value : 0.0;
-		printf("leftValue : %f\n", leftValue);
-		printf("rightValue : %f\n", rightValue);
 
 		switch(expression->type) {
 			case TE_EQUALS:
 				printf("%f == %f\n", leftValue, rightValue);
 				final->value = (leftValue == rightValue) ? 1.0 : 0.0;
+				break;
+			case TE_NEQUALS:
+				printf("%f != %f\n", leftValue, rightValue);
+				final->value = (leftValue != rightValue) ? 1.0 : 0.0;
+				break;
+			case TE_LESS:
+				printf("%f < %f\n", leftValue, rightValue);
+				final->value = (leftValue < rightValue) ? 1.0 : 0.0;
+				break;
+			case TE_GREATER:
+				printf("%f > %f\n", leftValue, rightValue);
+				final->value = (leftValue > rightValue) ? 1.0 : 0.0;
+				break;
+			case TE_LESS_EQUALS:
+				printf("%f <= %f\n", leftValue, rightValue);
+				final->value = (leftValue <= rightValue) ? 1.0 : 0.0;
+				break;
+			case TE_GREATER_EQUALS:
+				printf("%f >= %f\n", leftValue, rightValue);
+				final->value = (leftValue >= rightValue) ? 1.0 : 0.0;
+				break;
+			case TE_AND:
+				printf("%f && %f\n", leftValue, rightValue);
+				final->value = (leftValue && rightValue) ? 1.0 : 0.0;
+				break;
+			case TE_OR:
+				printf("%f || %f\n", leftValue, rightValue);
+				final->value = (leftValue || rightValue) ? 1.0 : 0.0;
+				break;
+			case TE_NOT:
+				printf("! %f\n", leftValue);
+				final->value = (!leftValue) ? 1.0 : 0.0;
+				break;
+			case TE_PLUS:
+				printf("%f <= %f\n", leftValue, rightValue);
+				final->value = (leftValue + rightValue);
+				break;
+			case TE_MINUS:
+				printf("%f >= %f\n", leftValue, rightValue);
+				final->value = (leftValue - rightValue);
+				break;
+			case TE_STAR:
+				printf("%f && %f\n", leftValue, rightValue);
+				final->value = (leftValue * rightValue);
+				break;
+			case TE_DIVIDE:
+				printf("%f || %f\n", leftValue, rightValue);
+				if (rightValue != 0.0)
+					final->value = (leftValue / rightValue);
+				else
+					final->value = 0.0;
+				break;
+			case TE_MODULO:
+				printf("%f mod %f\n", leftValue, rightValue);
+				final->value = ((int)leftValue % (int)rightValue);
 				break;
 			case TE_VALUE:
 				printf("[VAL]: %f\n", expression->value);
@@ -69,6 +119,9 @@ Expression* evalExpression(Expression* expression) {
 			case TE_DIGRESS:
 				printf("[VAL]: %f\n", leftValue);
 				final->value = leftValue;
+				break;
+			default:
+				final->value = 0;
 				break;
 		}
 	}
