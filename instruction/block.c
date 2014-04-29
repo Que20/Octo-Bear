@@ -76,15 +76,17 @@ Table* removeVariable(Table *root, char *name) {
 		} else {
 			while (tmpLast != NULL) {
 				tmpTest = tmpTest->next;
-
+				/*
 				if (tmpTest != NULL && strcmp(root->name, name) == 0) {
 
 				}
-
+				*/
 				tmpLast = tmpTest;
 			}
 		}
 	}
+
+	return tmpLast;
 }
 
 void printSpace(int space) {
